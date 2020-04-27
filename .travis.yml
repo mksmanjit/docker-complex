@@ -21,3 +21,16 @@ after_success:
   - docker push mksmanjit/complex-nginx
   - docker push mksmanjit/complex-server
   - docker push mksmanjit/complex-worker
+
+deploy:
+  edge: true
+  provier: elasticbeanstalk
+  region: us-east-2
+  app: complex-docker
+  env: ComplexDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-918254388780
+  bucket_path: complex-docker
+  on :
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
